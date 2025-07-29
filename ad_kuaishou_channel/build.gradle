@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.kwai.monitor'
+    namespace 'com.kwai.monitor.payload'
     compileSdk 35
 
     defaultConfig {
@@ -42,15 +42,13 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    api 'androidx.annotation:annotation:1.9.1'
+    api libs.androidx.annotation
 
     // AndroidUtilCode 是一个强大易用的安卓工具类库，它合理地封装了安卓开发中常用的函数，具有完善的 Demo 和单元测试，利用其封装好的 APIs 可以大大提高开发效率， 如今它主要包括两部分模块，
     // 其一是主工具类模块：utilcode，其中的工具类是开发中常用到的；
     // 其二是子工具类模块：subutil，它包含的工具类并不是很常用，它的出现是为了防止主工具类的臃肿。
     // blankj https://github.com/Blankj/AndroidUtilCode
-    api "com.blankj:utilcodex:1.31.1"
-
-    api project(":lib_aar_ad_kuaishou_channel")
+    api libs.utilcodex
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,9 +67,10 @@ publishing {
             artifactId = mArtifactId
             version = mVersion
 
-            afterEvaluate {
-                from(components["release"])
-            }
+            artifact("src/main/libs/channelsdk-0.2.3.aar")
+//            afterEvaluate {
+//                from(components["release"])
+//            }
         }
     }
 

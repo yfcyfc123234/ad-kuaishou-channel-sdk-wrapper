@@ -22,4 +22,3 @@ dependencyResolutionManagement {
 rootProject.name = "ad-kuaishou-channel-sdk-wrapper"
 include(":app")
 include(":ad_kuaishou_channel")
-include(":lib_aar_ad_kuaishou_channel")
